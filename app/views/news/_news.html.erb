@@ -1,0 +1,12 @@
+<ul id="news">
+  <% news_pages.each do |page| %>
+    <li class="col-lg-4 col-md-6 col-sm-6 col-xs-6" style="background-image: url(<%= page[:image_src] %>);">
+      <div class="heading">
+        <span class="date">
+          <%= page[:date] %>
+        </span>
+        <%= link_to page[:label], "/news/#{page[:slug]}", class: 'title' %>
+      </div>
+    </li>
+  <% end %>
+</ul>

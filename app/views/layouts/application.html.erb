@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= @cms_page.label %> - New Zealand Shipping Federation</title>
+    <%= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+
+  </head>
+
+  <body>
+
+    <div class="container header-content">
+      <div class="col-xs-3">
+        <%= link_to '/' do %>
+          <%= image_tag 'shipping-logo.jpg', id: 'header-logo' %>
+        <% end %>
+      </div>
+
+      <div class="col-xs-9">
+
+        <div class="col-sm-12 container header-contact"> 
+          <div class="col-sm-7 phone">
+            Phone: +64 04 499 6222<br />
+            Mobile: 021 429 216
+          </div>
+          <div class="col-sm-5 twitter">
+            <a class="btn btn-social btn-twitter" href="https://twitter.com/NZCoastal">
+              <i class="fa fa-twitter"></i>Follow us on Twitter
+            </a>
+          </div>
+        </div>
+
+        <div class="col-sm-12 container reset-box-sizing google-search">
+          <script>
+            (function() {
+              var cx = '008966076301461225500:mv6hkkeoylg';
+              var gcse = document.createElement('script');
+              gcse.type = 'text/javascript';
+              gcse.async = true;
+              gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+                  '//www.google.com/cse/cse.js?cx=' + cx;
+              var s = document.getElementsByTagName('script')[0];
+              s.parentNode.insertBefore(gcse, s);
+            })();
+          </script>
+          <gcse:search></gcse:search>
+        </div>
+      </div>
+    </div>
+
+    <nav class="header navbar navbar-default navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><%= current_link_to "About the NZSF", '/about-the-nzsf' %></li>
+            <li><%= current_link_to "About shipping in NZ", '/about-shipping-in-new-zealand' %></li>
+            <li><%= current_link_to "News", '/news' %></li>
+            <li><%= current_link_to "Media", '/media' %></li>
+            <li><%= current_link_to 'Links', '/links' %></li>
+            <li><%= current_link_to 'History', '/history' %></li>
+            <li><%= current_link_to 'Contact', '/contact' %></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <% if flash[:notice] %>
+      
+      <div class="flash container-fluid bg-success">
+        <%= flash[:notice] %>
+        <button type="button" class="close" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+    <% end %>
+
+    <div class="container carousel-images">
+      <%= render 'carousel_images' %> 
+    </div>
+
+    <div class="container">
+      <div class="col-sm-9 main_content"> 
+        <%= yield %>
+
+      </div>
+
+      <div class="col-sm-3">
+        <%= render 'recent_news' %>
+      </div>
+    </div>
+
+    <nav class="footer navbar navbar-default navbar-static-bottom">
+      <div class="container">
+        
+      </div>
+    </nav>
+
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js' %>
+  </body>
+</html>

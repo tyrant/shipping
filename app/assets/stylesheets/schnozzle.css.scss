@@ -1,0 +1,223 @@
+/* Option 2A: Reset an entire region via CSS */
+.reset-box-sizing,
+.reset-box-sizing *,
+.reset-box-sizing *:before,
+.reset-box-sizing *:after {
+  -webkit-box-sizing: content-box;
+     -moz-box-sizing: content-box;
+          box-sizing: content-box;
+}
+
+body {
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: Verdana;
+    border-bottom: thin solid #ddd;
+    padding-bottom: 6px;
+    margin-bottom: 6px;
+  }
+
+  .header-content {
+
+    .header-contact {
+      margin-top: 5px;
+    }
+
+    .header-contact, .phone, .twitter {
+      padding-right: 0;
+    }
+
+    .phone, .twitter {
+      margin: 3px 0px;
+    }
+
+    .phone {
+      text-align: right;
+    }
+
+    .btn-twitter {
+      float: right;
+    }
+
+    .google-search {
+      padding-right: 0px;
+      margin-right: -13px;
+    }
+  }
+
+  nav.header {
+    background-image: asset-url('waves.jpg');
+    background-size: cover;
+    margin-bottom: 0px;
+
+    .navbar-toggle {
+      background-color: white;
+    }
+
+    li {
+
+      text-align: center;
+      a {
+        margin: 5px 2px;
+        padding: 10px;
+        border-radius: 10px;
+        color: #fff !important; /* Override Bootstrap's default */
+        font-size: 12pt;
+        font-family: Verdana;
+        transition: background-color 0.2s;
+      }
+
+      a.current-page {
+        background-color: rgba(255, 255, 255, 0.3) !important;
+      }
+
+      a:hover {
+        background-color: rgba(255, 255, 255, 0.35) !important;
+      }
+
+      a:active {
+        background-color: rgba(255, 255, 255, 0.4) !important;
+      }
+
+    }
+  }
+
+  .flash {
+    padding: 10px 15px;
+    text-align: center;
+  }
+
+  .carousel-images {
+    margin-top: 20px;
+  }
+
+  .rrssb-desc {
+    font-size: 10pt;
+  }
+
+  ul.rrssb-buttons {
+    margin: 10px 0px;
+  }
+
+  .feedback-form {
+    margin: 25px;
+  }
+
+  .main_content {
+    overflow: hidden;
+
+    ul#news {
+      padding-left: 0;
+
+      li {
+        padding: 0px;
+        list-style-type: none;
+        height: 200px;
+        overflow: hidden;
+        transition: background-position 0.4s, padding-top 0.4s;
+        background-size: cover;
+        background-position: center;
+
+        .heading {
+          position: relative;
+          top: -70px;
+          max-height: 70px;
+          background-color: rgba(0, 0, 0, 0.8);
+          /*background: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);*/
+          color: white;
+          width: 100%;
+          padding: 5px;
+          text-align: center;
+          text-overflow: ellipsis;
+          overflow: hidden;
+
+          .date {
+
+          }
+
+          .title {
+            color: white;
+            font-weight: bold;
+          }
+        }
+      }
+
+      li:hover, li:active {
+        padding-top: 70px;
+        background-position: center 30px;
+        transition: background-position 0.2s, padding-top 0.2s blur 1s;
+      }
+    }
+  }
+
+  #recent_news {
+
+    ul {
+      padding-left: 0px;
+
+      li {
+        border-bottom: thin solid #ddd;
+        font-size: 10pt;
+        list-style-type: none;
+        padding: 10px 0px;
+      }
+
+      li.more {
+        border-bottom: none;
+        border-radius: 5px;
+        text-align: center;
+        margin-top: 10px;
+        padding: 5px;
+      }
+
+      li.more:hover {
+
+      }
+    }
+  }
+
+  nav.footer {
+    margin-top: 20px;
+    margin-bottom: 0px;
+    background-image: asset-url('waves.jpg');
+    background-size: cover;
+  }
+}
+
+@media(max-width: 350px) {
+  
+}
+
+
+@media(max-width: 768px) {
+  
+  body {
+    nav.header li a {
+      margin: 5px 10px;
+    }
+
+    .main_content {
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media(min-width: 768px) {
+  body {
+    .main_content {
+      img {
+        max-width: 100%;
+      }
+    }
+  }
+}
+
+@media(min-width: 992px) {
+  
+}
+
+@media(min-width: 1200px) {
+  
+}
