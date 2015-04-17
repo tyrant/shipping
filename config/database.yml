@@ -24,7 +24,7 @@ production:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: pathwrangler_production
+  database: shipping_production
   pool: 5
   username: root
-  password:
+  password: sprightly773
