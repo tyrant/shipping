@@ -22,9 +22,6 @@ gem 'capistrano-rails', '~> 1.1.1'
 gem 'capistrano-rbenv', github: "capistrano/rbenv"
 gem 'capistrano-passenger'
 
-# These are needed for the Production server! It's a Javascript runtime environment.
-gem 'execjs'
-gem 'therubyracer'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
