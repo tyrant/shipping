@@ -17,12 +17,14 @@ $ ->
 
       if $(window).scrollTop() >= logoHeight and !fixed
         $('nav.header').removeClass('navbar-static-top').addClass('navbar-fixed-top')
+        #$('#recent_news').css('position', 'fixed')
         $('body').css 'padding-top', (logoHeight + navHeight + navMargin) + 'px'
         $('.header-content').hide()
         fixed = true
 
       else if $(window).scrollTop() < logoHeight and fixed
         $('nav.header').removeClass('navbar-fixed-top').addClass('navbar-static-top')
+        #$('#recent_news').css('position', 'static')
         $('body').css 'padding-top', '0px'
         $('.header-content').show()
         fixed = false
