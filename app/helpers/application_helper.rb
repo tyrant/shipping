@@ -3,18 +3,24 @@ module ApplicationHelper
   # Grab the headlines and dates of the five most recent news article pages.
   # This isn't the most computationally efficient, as it returns the entire news table.
   def recent_news
-    @cms_site.pages.find do |page|  # Grab the sub-pages of the 'news' page...
+    news_pages = @cms_site.pages.find do |page|  # Grab the sub-pages of the 'news' page...
       page.label == 'news'
 
-    end.children.sort do |a, b|                   # ...order them by creation date, descending...
-      b.created_at.to_i <=> a.created_at.to_i
+    end
 
-    end.take(5).map do |page|                     # ...grab the first five and return their label and creation date.
-      {
-        label: page.label,
-        slug:  page.slug, 
-        date:  page.created_at.strftime("%F")
-      }
+    if news_pages 
+      news_pages.children.sort do |a, b|                   # ...order them by creation date, descending...
+        b.created_at.to_i <=> a.created_at.to_i
+
+      end.take(5).map do |page|                     # ...grab the first five and return their label and creation date.
+        {
+          label: page.label,
+          slug:  page.slug, 
+          date:  page.created_at.strftime("%F")
+        }
+      end
+    else 
+      []
     end
   end
 
@@ -41,36 +47,42 @@ module ApplicationHelper
   # Nokogiri and doing an <img> tag search.
   # If an article doesn't have any images, use a default news image at random.
   def news_pages   
-    @cms_site.pages.find do |page|
+    news_pages = @cms_site.pages.find do |page|
       page.label == 'news'
 
-    end.children.map do |article|
+    end
 
-      content = article.blocks.map do |block|
-        block.content
-      end.join
-      
-      images = Nokogiri::HTML(content).css('img')
+    if news_pages
+      news_pages.children.map do |article|
+        content = article.blocks.map do |block|
+          block.content
+        end.join
+        
+        # Grab every <img> element
+        images = Nokogiri::HTML(content).css('img')
 
-      # Grab either the article's first image, or if it doesn't have one, one of the default_news
-      # images at random.
-      image_src = if images.length > 0
-        images.first['src']
-      else
-        @cms_site.files.find_all do |file|
-          file.categories.map {|c| c.label }.include? 'default_news'
-        end.shuffle!.map do |file|
-          file.file.url(:default_news)
-        end.first
+        # Grab either the article's first image, or if it doesn't have one, one of the default_news
+        # images at random.
+        image_src = if images.length > 0
+          images.first['src']
+        else
+          @cms_site.files.find_all do |file|
+            file.categories.map {|c| c.label }.include? 'default_news'
+          end.shuffle!.map do |file|
+            file.file.url(:default_news)
+          end.first
+        end
+
+        {
+          label:     article.label,
+          slug:      article.slug,
+          image_src: image_src,
+          content:   content,
+          date:      article.created_at.strftime("%F")
+        }
       end
-
-      {
-        label:     article.label,
-        slug:      article.slug,
-        image_src: image_src,
-        content:   content,
-        date:      article.created_at.strftime("%F")
-      }
+    else 
+      []
     end
   end
 end
