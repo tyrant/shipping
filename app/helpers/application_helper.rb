@@ -85,4 +85,8 @@ module ApplicationHelper
       []
     end
   end
+
+  def slugify(string)
+    string.parameterize
+  end
 end
