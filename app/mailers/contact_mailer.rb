@@ -6,6 +6,6 @@ class ContactMailer < ApplicationMailer
     @phone = params[:phone]
     @message = params[:message]
 
-    mail to: 'deathtomosttyrants@gmail.com', subject: 'blargh'
+    mail to: 'epicschnozz@gmail.com', from: 'deathtomosttyrants@gmail.com', subject: 'blargh'
   end
 end
