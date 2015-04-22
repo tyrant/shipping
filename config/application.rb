@@ -27,7 +27,7 @@ module Shipping
     config.action_mailer.smtp_settings = {
       address:              'smtp.gmail.com',
       port:                 587,
-      domain:               'nzsf.org.nz',
+      domain:               'gmail.com',
       user_name:            'epicschnozz@gmail.com',
       password:             'blaughblaugh',
       authentication:       'plain',
