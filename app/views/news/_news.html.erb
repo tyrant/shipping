@@ -1,4 +1,5 @@
 <ul id="news">
+  <!-- Page count: <%= news_pages.length %>-->
   <% news_pages.each do |page| %>
     <li class="col-lg-4 col-md-6 col-sm-6 col-xs-6" style="background-image: url(<%= page[:image_src] %>);">
       <div class="heading">
