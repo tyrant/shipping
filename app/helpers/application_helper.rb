@@ -8,8 +8,11 @@ module ApplicationHelper
 
     end
 
-    if news_pages 
-      news_pages.children.sort do |a, b|                   # ...order them by creation date, descending...
+    if news_pages
+      news_pages.children.find_all do |page|
+        page.is_published?
+
+      end.sort do |a, b|                   # ...order them by creation date, descending...
         b.created_at.to_i <=> a.created_at.to_i
 
       end.take(5).map do |page|                     # ...grab the first five and return their label and creation date.
@@ -53,7 +56,10 @@ module ApplicationHelper
     end
 
     if news_pages
-      news_pages.children.map do |article|
+      news_pages.children.find_all do |page|
+        page.is_published? 
+
+      end.map do |article|
         content = article.blocks.map do |block|
           block.content
         end.join
@@ -81,6 +87,7 @@ module ApplicationHelper
           date:      article.created_at.strftime("%F")
         }
       end
+
     else 
       []
     end
