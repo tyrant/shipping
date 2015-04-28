@@ -1,5 +1,17 @@
 module ApplicationHelper
 
+  # Given a news article, return (if it has one), its published_on block content, otherwise its created_at.
+  def news_published_on(page)
+    published_on = page.blocks.find {|b| b.identifier == 'published_on' }
+    if !!published_on
+      c = published_on.content
+      y, m, d, h, i, s = c[0,4], c[5,2], c[8,2], c[11,2], c[14,2], c[17,2]
+      Time.new(y, m, d, h, i, s)
+    else
+      page.created_at
+    end
+  end
+
   # Grab the headlines and dates of the five most recent news article pages.
   # This isn't the most computationally efficient, as it returns the entire news table.
   def recent_news
@@ -12,14 +24,16 @@ module ApplicationHelper
       news_pages.children.find_all do |page|
         page.is_published?
 
-      end.sort do |a, b|                   # ...order them by creation date, descending...
-        b.created_at.to_i <=> a.created_at.to_i
+      end.sort do |page1, page2|                   # ...order them by either published or creation date, descending...
+        news_published_on(page2).to_i <=> news_published_on(page1).to_i
 
-      end.take(5).map do |page|                     # ...grab the first five and return their label and creation date.
+      end.take(5).map do |page|            # ...grab the first five and return their label and creation date.
+        date = news_published_on(page)
+
         {
           label: page.label,
           slug:  page.slug, 
-          date:  page.created_at.strftime("%F")
+          date:  date.strftime('%F')
         }
       end
     else 
@@ -52,7 +66,6 @@ module ApplicationHelper
   def news_pages   
     news_pages = @cms_site.pages.find do |page|
       page.label == 'news'
-
     end
 
     if news_pages
