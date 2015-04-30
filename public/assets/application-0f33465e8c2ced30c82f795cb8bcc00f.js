@@ -12332,13 +12332,18 @@ return jQuery;
     };
     loadMore = function() {
       var earliestTimestamp, news_tmpl;
+      console.log('loading loadMore()');
       news_tmpl = $('#news_tmpl').text();
       earliestTimestamp = Math.pow(2, 32);
       $('#load_more').on('click', function() {
+        console.log('#load_more clicked');
         $('#load_more #spinner').show();
+        $('#load_more').prop('disabled', true);
         return $.get("/more_news?before=" + earliestTimestamp, function(response) {
           var i, len, page, page_html, results;
           $('#load_more #spinner').hide();
+          $('#load_more').prop('disabled', false);
+          console.log('#load_more response');
           results = [];
           for (i = 0, len = response.length; i < len; i++) {
             page = response[i];

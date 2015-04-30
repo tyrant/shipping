@@ -27,7 +27,7 @@ class NewsController < ApplicationController
         news_published_on(page2).to_i <=> news_published_on(page1).to_i
 
       # ...and finally, of those, select the most recent 12 and return their data.
-      end[0..5].map do |page|
+      end[0..11].map do |page|
         content = page.blocks.map do |block|
           block.content
         end.join
