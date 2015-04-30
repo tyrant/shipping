@@ -152,8 +152,12 @@ body {
       }
     }
 
-    #load_more {
-      margin: 10px;
+    #load_more_wrapper {
+      clear: both;
+      
+      #load_more {
+        margin: 10px;
+      }
     }
   }
 
