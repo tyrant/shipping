@@ -1,5 +1,9 @@
 # A few utility functions.
 
+_.templateSettings =
+  interpolate: /\{\{(.+?)\}\}/g # Replace <% %> with {{ }}
+  execute: /\{\[(.+?)\]\}/g     # Replace <%= %> with {[ ]}
+
 $ ->
 
   # Page scroll: whenever the user scrolls the page up and down, if they've scrolled
@@ -60,8 +64,31 @@ $ ->
         clearInterval blah
     , 100
 
+  # Load a batch of news articles.
+  loadMore = ->
+
+    news_tmpl = $('#news_tmpl').text()
+    earliestTimestamp = 2**32
+
+    $('#load_more').on 'click', ->
+      $('#load_more #spinner').show()
+
+      $.get "/more_news?before=#{earliestTimestamp}", (response) ->
+        $('#load_more #spinner').hide()
+
+        # Add the latest items to the page
+        for page in response
+          page_html = _.template(news_tmpl)(page)
+          $('#news').append page_html
+
+          earliestTimestamp = page.timestamp if page.timestamp < earliestTimestamp
+
+    $('#load_more').click()
+
+    
 
   fixHeader()
   carousel()
   close()
   search()
+  loadMore()

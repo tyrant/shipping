@@ -14,6 +14,7 @@
 //= require jquery2
 //= require jquery_ujs
 //= require turbolinks
+//= require underscore-1.8.3
 //= require_tree .
 //= require schnozzle
 //= require rrssb

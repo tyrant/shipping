@@ -56,6 +56,7 @@ Rails.application.routes.draw do
   #   end
 
   post 'contact' => 'contact#contact'
+  get 'more_news' => 'news#index'
 
   comfy_route :cms_admin, :path => '/admin'
 

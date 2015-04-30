@@ -149,6 +149,10 @@ body {
         transition: background-position 0.2s, padding-top 0.2s blur 1s;
       }
     }
+
+    #load_more {
+      margin: 10px;
+    }
   }
 
   #recent_news {

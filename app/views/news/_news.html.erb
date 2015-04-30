@@ -1,12 +1,15 @@
-<ul id="news">
-  <% news_pages.each do |page| %>
-    <li class="col-lg-4 col-md-6 col-sm-6 col-xs-6" style="background-image: url(<%= page[:image_src] %>);">
-      <div class="heading">
-        <span class="date">
-          <%= page[:date] %>
-        </span>
-        <%= link_to page[:label], "/news/#{page[:slug]}", class: 'title' %>
-      </div>
-    </li>
-  <% end %>
-</ul>
+<ul id="news"></ul>
+
+<button type="button" class="btn btn-info btn-lg" id="load_more">
+  Load More
+  <i class="fa fa-refresh fa-spin" id="spinner"></i>
+</button>
+
+<script type="text/html" id="news_tmpl">
+  <li class="col-lg-4 col-md-6 col-sm-6 col-xs-6" style="background-image: url({{ image_src }});">
+    <div class="heading">
+      <span class="date">{{ date }}</span>
+      <a href="/news/{{ slug }}" class="title">{{ label }}</a>
+    </div>
+  </li>
+</script>
