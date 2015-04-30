@@ -23,7 +23,7 @@ gem 'capistrano-bundler', '~> 1.1.2'
 gem 'capistrano-rails', '~> 1.1.1'
 gem 'capistrano-rbenv', github: "capistrano/rbenv"
 gem 'capistrano-passenger'
-gem 'capistrano-faster-assets'
+#gem 'capistrano-faster-assets'
 
 # These are needed for the Production server! It's a Javascript runtime environment.
 gem 'execjs'
