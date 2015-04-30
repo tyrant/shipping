@@ -28,12 +28,11 @@ module ApplicationHelper
         news_published_on(page2).to_i <=> news_published_on(page1).to_i
 
       end.take(5).map do |page|            # ...grab the first five and return their label and creation date.
-        date = news_published_on(page)
 
         {
           label: page.label,
           slug:  page.slug, 
-          date:  date.strftime('%F')
+          date:  news_published_on(page).strftime('%F')
         }
       end
     else 
@@ -72,15 +71,18 @@ module ApplicationHelper
       news_pages.children.find_all do |page|
         page.is_published? 
 
-      end.map do |article|
-        content = article.blocks.map do |block|
+      end.sort do |page1, page2|           # ...order them by either published or creation date, descending...
+        news_published_on(page2).to_i <=> news_published_on(page1).to_i
+
+      end.map do |page|
+        content = page.blocks.map do |block|
           block.content
         end.join
         
         # Grab every <img> element
         images = Nokogiri::HTML(content).css('img')
 
-        # Grab either the article's first image, or if it doesn't have one, one of the default_news
+        # Grab either the page's first image, or if it doesn't have one, one of the default_news
         # images at random.
         image_src = if images.length > 0
           images.first['src']
@@ -93,11 +95,11 @@ module ApplicationHelper
         end
 
         {
-          label:     article.label,
-          slug:      article.slug,
+          label:     page.label,
+          slug:      page.slug,
           image_src: image_src,
           content:   content,
-          date:      article.created_at.strftime("%F")
+          date:      news_published_on(page).strftime("%F")
         }
       end
 

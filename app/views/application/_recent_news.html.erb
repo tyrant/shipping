@@ -1,9 +1,9 @@
 <div id="recent_news">
   <h3>Recent News</h3>
   <ul>
-    <% recent_news.each do |article| %>
+    <% recent_news.each do |page| %>
       <li>
-        <%= link_to article[:label], "/news/#{article[:slug]}" %>, <%= article[:date] %>
+        <%= link_to page[:label], "/news/#{page[:slug]}" %>, <%= page[:date] %>
       </li>
     <% end %>
     <%= link_to '/news' do %>
