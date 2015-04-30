@@ -109,6 +109,8 @@ body {
 
     ul#news {
       padding-left: 0;
+      float: left;
+      clear: both;
 
       li {
         padding: 0px;
