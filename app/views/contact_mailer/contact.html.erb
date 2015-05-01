@@ -4,9 +4,24 @@
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
   </head>
   <body>
-    <%= @name %><br />
-    <%= @email %><br />
-    <%= @phone %><br />
-    <%= @message %><br />
+    Hi, Annabel,<br /><br />
+
+    This is an automatic email, letting you know you've received an inquiry from the Shipping Federation website!
+
+    Their contact details: <br /><br />
+
+    Name: <%= @name %><br />
+    Email: <%= @email %><br />
+    Phone: <%= @phone %><br /><br />
+
+    The inquiry message itself:<br /><br />
+
+    <%= @message %><br /><br />
+
+    Yours sincerely,<br />
+    The NZ Shipping Federation web server.<br />
+
+    <br /><br /><br />
+    <small>brain the size of a planet...</small>
   </body>
 </html>
