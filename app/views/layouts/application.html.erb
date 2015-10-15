@@ -62,12 +62,27 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><%= current_link_to "About the NZSF", '/about-the-nzsf' %></li>
+            <li><%= current_link_to "Home", '/' %></li>
+            <li class="dropdown">
+              <%= current_link_to 'About the NZSF', '/about-the-nzsf', { id: 'about-dropdown', class: 'dropdown-toggle', 'data-toggle': 'dropdown', role: 'button', 'aria-haspopup': true, 'aria-expanded': false } %>
+
+              <ul class="dropdown-menu" aria-labelledby="about-dropdown">
+                <li><%= current_link_to 'About the NZSF', '/about-the-nzsf' %></li>
+                <% if about_nzsf_subpages.length > 0 %>
+                  <% about_nzsf_subpages.each do |page| %>
+                    <li><%= current_link_to page.label, "/about-the-nzsf/#{page.slug}" %></li>
+                  <% end %>
+                <% end %>
+              </ul>
+            </li>
+
             <li><%= current_link_to "About shipping in NZ", '/about-shipping-in-new-zealand' %></li>
             <li><%= current_link_to "News", '/news' %></li>
             <li><%= current_link_to "Media", '/media' %></li>
             <li><%= current_link_to 'Links', '/links' %></li>
             <li><%= current_link_to 'History', '/history' %></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
             <li><%= current_link_to 'Contact', '/contact' %></li>
           </ul>
         </div>

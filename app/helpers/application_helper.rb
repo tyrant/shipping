@@ -47,17 +47,22 @@ module ApplicationHelper
     end
   end
 
-  def current_link_to(content, url)
-    klass = if current_page? url
+  def current_link_to(content, url, options={})
+    options[:class] = if current_page? url
       'current-page'
     else
       ''
     end
+
     
-    link_to content, url, class: klass
+    link_to content, url, options
   end
 
   def slugify(string)
     string.parameterize
+  end
+
+  def about_nzsf_subpages
+    Comfy::Cms::Page.find_by_label('About the NZSF').children
   end
 end

@@ -66,7 +66,6 @@ $ ->
 
   # Load a batch of news articles.
   loadMore = ->
-    console.log 'loading loadMore()'
 
     news_tmpl = $('#news_tmpl').text()
     earliestTimestamp = 2**32
@@ -97,3 +96,5 @@ $ ->
   close()
   search()
   loadMore()
+  $('.dropdown-toggle').dropdown()
+  console.log 'loaded js'

@@ -56,14 +56,14 @@ body {
     }
 
     li {
-
       text-align: center;
+
       a {
-        margin: 5px 2px;
+        margin: 5px 1px;
         padding: 10px;
         border-radius: 10px;
         color: #fff !important; /* Override Bootstrap's default */
-        font-size: 12pt;
+        font-size: 11pt;
         font-family: Verdana;
         transition: background-color 0.2s;
       }
@@ -80,6 +80,22 @@ body {
         background-color: rgba(255, 255, 255, 0.4) !important;
       }
 
+      ul.dropdown-menu {
+        background-image: asset-url('waves.jpg');
+        padding: 0;
+        max-height: 200px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        border-top: none;
+
+        a {
+          margin: 5px 2px;
+          padding: 10px;
+          font-size: 10pt;
+        }
+      }
     }
   }
 
