@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'comfortable_mexican_sofa', '~> 1.12.0'
+gem 'comfortable_mexican_sofa', '1.12.2'
 gem 'will_paginate' 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

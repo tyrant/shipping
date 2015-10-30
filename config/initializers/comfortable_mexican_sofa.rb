@@ -5,11 +5,11 @@ ComfortableMexicanSofa.configure do |config|
   config.cms_title = 'New Zealand Shipping Federation admin area for Consenting Adults'
 
   # Controller that is inherited from CmsAdmin::BaseController
-  #   config.base_controller = 'ApplicationController'
+  config.base_controller = 'ApplicationController'
 
   # Module responsible for authentication. You can replace it with your own.
   # It simply needs to have #authenticate method. See http_auth.rb for reference.
-  #   config.admin_auth = 'ComfyAdminAuthentication'
+  config.admin_auth = 'ComfyAdminAuthentication'
 
   # Module responsible for authorization on admin side. It should have #authorize
   # method that returns true or false based on params and loaded instance
@@ -98,17 +98,20 @@ ComfortableMexicanSofa.configure do |config|
   }
 end
 
-# Default credentials for ComfortableMexicanSofa::AccessControl::AdminAuthentication
-# YOU REALLY WANT TO CHANGE THIS BEFORE PUTTING YOUR SITE LIVE
-ComfortableMexicanSofa::AccessControl::AdminAuthentication.username = 'shipping'
-ComfortableMexicanSofa::AccessControl::AdminAuthentication.password = 'ship2015'
 
 # Uncomment this module and `config.admin_auth` above to use custom admin authentication
-# module ComfyAdminAuthentication
-#   def authenticate
-#     return true
-#   end
-# end
+module ComfyAdminAuthentication
+  def authenticate
+    user = authenticate_or_request_with_http_basic "Can't be too careful, username and password please" do |u, p|
+      u == 'shipping' && p == 'ship2015'
+    end
+    if user
+      true
+    else
+      request_http_basic_authentication
+    end
+  end
+end
 
 # Uncomment this module and `config.admin_authorization` above to use custom admin authorization
 # module ComfyAdminAuthorization
