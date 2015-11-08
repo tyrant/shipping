@@ -61,5 +61,6 @@ group :development, :test do
 end
 
 group :production do
-  gem 'mysql2'
+  # stackoverflow.com/questions/22932282
+  gem 'mysql2', '~> 0.3.20'
 end
