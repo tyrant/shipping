@@ -4,7 +4,7 @@ gem 'comfortable_mexican_sofa', '1.12.2'
 gem 'will_paginate' 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.0'
+gem 'rails'
 # Use sqlite3 as the database for Active Record
 
 # Use SCSS for stylesheets
