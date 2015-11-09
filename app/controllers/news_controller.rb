@@ -70,7 +70,7 @@ class NewsController < ApplicationController
   # Given a news article, return (if it has one), its published_on block content, otherwise its created_at value.
   def news_published_on(page)
     published_on = page.blocks.find {|b| b.identifier == 'published_on' }
-    if !!published_on
+    if !!published_on && !published_on.content.blank?
       DateTime.parse published_on.content
     else
       page.created_at
