@@ -6,7 +6,7 @@ RAILS_ENV = ENV['RAILS_ENV'] || 'production'
 require 'yaml'
 db_config = YAML.load_file(database_yml)
 
-Backup::Model.new :db_backup, 'Database Backup' do 
+Model.new :db_backup, 'Database Backup' do 
 
   # The backup contains two things - all the users' photos...
   archive :files do |archive|
@@ -27,6 +27,9 @@ Backup::Model.new :db_backup, 'Database Backup' do
     db.port     = db_config[RAILS_ENV]['port']
     db.skip_tables = []
   end
+
+
+  compress_with Gzip
 
   # For now, store the backups on the local Production drive.
   # TODO: use something cloud-based. NewRelic?
