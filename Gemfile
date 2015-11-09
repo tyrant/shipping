@@ -27,6 +27,9 @@ gem 'capistrano-rbenv'
 gem 'capistrano-passenger'
 #gem 'capistrano-faster-assets'
 
+# bundle exec rails c production has stopped working! Ugh. Let's try this.
+gem 'capistrano-rails-console'
+
 # These are needed for the Production server! It's a Javascript runtime environment.
 gem 'execjs'
 gem 'therubyracer'

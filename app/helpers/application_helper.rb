@@ -35,7 +35,7 @@ module ApplicationHelper
       page.created_at
     end
   end
-  
+
   # Filter the site files by whether they're categorised as 'ships', and return their URLs.
   def ship_images
     @cms_site.files.find_all do |file|
@@ -59,6 +59,6 @@ module ApplicationHelper
   end
 
   def about_nzsf_subpages
-    Comfy::Cms::Page.find_by_label('About the NZSF').children
+    Comfy::Cms::Page.find_by_label('About the New Zealand Shipping Federation').children
   end
 end
