@@ -11,9 +11,10 @@ class NewsController < ApplicationController
   def index
 
     # Grab the master News page's children...
-    news_pages = Comfy::Cms::Page.find_by_label('news').children
+    news_pages = Comfy::Cms::Page.where(label: 'news').first.children
 
-    news_json = if news_pages.length
+    news_json = if news_pages
+
       # ...select all articles earlier than the 'before' param...
       news_pages.find_all do |page|
         if params[:before]
@@ -70,9 +71,7 @@ class NewsController < ApplicationController
   def news_published_on(page)
     published_on = page.blocks.find {|b| b.identifier == 'published_on' }
     if !!published_on
-      c = published_on.content
-      y, m, d, h, i, s = c[0,4], c[5,2], c[8,2], c[11,2], c[14,2], c[17,2]
-      Time.new(y, m, d, h, i, s)
+      DateTime.parse published_on.content
     else
       page.created_at
     end

@@ -3,8 +3,12 @@ source 'https://rubygems.org'
 gem 'comfortable_mexican_sofa', '1.12.2'
 gem 'will_paginate' 
 
+gem 'sqlite3'
+# stackoverflow.com/questions/22932282
+gem 'mysql2', '~> 0.3.20'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails'
+gem 'rails', '4.2.0'
 # Use sqlite3 as the database for Active Record
 
 # Use SCSS for stylesheets
@@ -45,10 +49,12 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# Upgrading Rails has abstracted out respond_to.
+gem 'responders', '~> 2.0'
+
 
 group :development, :test do
 
-  gem 'sqlite3'
   gem 'awesome_print'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -61,6 +67,5 @@ group :development, :test do
 end
 
 group :production do
-  # stackoverflow.com/questions/22932282
-  gem 'mysql2', '~> 0.3.20'
+
 end
