@@ -55,6 +55,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Upgrading Rails has abstracted out respond_to.
 gem 'responders', '~> 2.0'
 
+gem 'backup'
+gem 'backup-task'
+
 group :development, :test do
 
   gem 'awesome_print'
