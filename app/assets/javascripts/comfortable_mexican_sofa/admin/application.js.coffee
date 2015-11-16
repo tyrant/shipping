@@ -25,6 +25,8 @@
         height: 1000
         buttons: ['format', 'bold', 'italic', 'underline', 'lists', 'image', 'link']
         plugins: ['scriptbuttons']
-        imageUpload: $('.cms-files-modal').data('iframe-src') + '?ajax=1'
-        imageGetJson: $('.cms-files-modal').data('iframe-src') + '?ajax=1'
+        imageUpload: CMS.file_upload_path + '?ajax=1'
+        imageGetJson: CMS.file_upload_path + '?ajax=1'
+        #imageUpload: $('.cms-files-modal').data('iframe-src') + '?ajax=1'
+        #imageGetJson: $('.cms-files-modal').data('iframe-src') + '?ajax=1'
         formattingTags: ['p', 'h1', 'h2', 'h3', 'h4']
