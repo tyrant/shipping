@@ -58,6 +58,8 @@ gem 'responders', '~> 2.0'
 gem 'backup'
 gem 'backup-task'
 
+gem 'ap'
+
 group :development, :test do
 
   gem 'awesome_print'
