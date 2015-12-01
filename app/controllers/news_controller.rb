@@ -27,7 +27,7 @@ class NewsController < ApplicationController
       end.sort do |page1, page2|
         news_published_on(page2).to_i <=> news_published_on(page1).to_i
 
-      # ...and finally, of those, select the most recent 12 and return their data.
+      # ...and finally, of those, select the most recent 20 and return their data.
       end[0..19].map do |page|
         content = page.blocks.map do |block|
           block.content
@@ -36,6 +36,7 @@ class NewsController < ApplicationController
         # Grab every <img> element
         images = Nokogiri::HTML(content).css('img')
 
+        ap images.length
         # Grab either the page's first image, or if it doesn't have one, one of the default_news
         # images at random.
         image_src = if images.length > 0
