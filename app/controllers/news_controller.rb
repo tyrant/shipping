@@ -36,13 +36,12 @@ class NewsController < ApplicationController
         # Grab every <img> element
         images = Nokogiri::HTML(content).css('img')
 
-        ap images.length
         # Grab either the page's first image, or if it doesn't have one, one of the default_news
         # images at random.
         image_src = if images.length > 0
           images.first['src']
         else
-          Comfy::Cms::File.where(1) do |file|
+          Comfy::Cms::File.where(1).find_all do |file|
             file.categories.map {|c| c.label }.include? 'default_news'
 
           end.map do |file|
