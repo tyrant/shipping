@@ -40,6 +40,7 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', '
 # set :keep_releases, 5
 
 set :rbenv_type, :user
+set :rbenv_ruby, '2.0.0p0'
 
 namespace :deploy do
 
