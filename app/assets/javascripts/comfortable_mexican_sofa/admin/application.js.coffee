@@ -31,20 +31,4 @@
         imageUpload: CMS.file_upload_path + '?ajax=1' + csrf_params
         imageGetJson: CMS.file_upload_path + '?ajax=1' + csrf_params
         formattingTags: ['p', 'h1', 'h2', 'h3', 'h4']
-        callbacks: 
-          init: ->
-            console.log 'init'
-            $('.redactor-box').on 'drop', (e) ->
-              console.log(e)
-              src = e.originalEvent.dataTransfer.getData 'text/plain'
-              img = new Image()
-              img.src = src
-              console.log(img)
-
-              $(this).trigger('drop', img)
-
-            # $('.redactor-box').bind('dropthis', (e) ->
-            #   console.log 'drop triggered'
-            # ).droppable
-            #   drop: function(e, ui) ->
 
