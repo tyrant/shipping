@@ -96,5 +96,5 @@ $ ->
   close()
   search()
   loadMore()
+
   $('.dropdown-toggle').dropdown()
-  console.log 'loaded js'

@@ -1,5 +1,6 @@
 #= require comfortable_mexican_sofa/lib/redactor
 
+  # Fire up the Redactor editor.
   if window.CMS
     window.CMS.wysiwyg = ->
 
@@ -29,6 +30,21 @@
         plugins: ['scriptbuttons']
         imageUpload: CMS.file_upload_path + '?ajax=1' + csrf_params
         imageGetJson: CMS.file_upload_path + '?ajax=1' + csrf_params
-        #imageUpload: $('.cms-files-modal').data('iframe-src') + '?ajax=1'
-        #imageGetJson: $('.cms-files-modal').data('iframe-src') + '?ajax=1'
         formattingTags: ['p', 'h1', 'h2', 'h3', 'h4']
+        callbacks: 
+          init: ->
+            console.log 'init'
+            $('.redactor-box').on 'drop', (e) ->
+              console.log(e)
+              src = e.originalEvent.dataTransfer.getData 'text/plain'
+              img = new Image()
+              img.src = src
+              console.log(img)
+
+              $(this).trigger('drop', img)
+
+            # $('.redactor-box').bind('dropthis', (e) ->
+            #   console.log 'drop triggered'
+            # ).droppable
+            #   drop: function(e, ui) ->
+
