@@ -9,7 +9,7 @@ class NewsController < ApplicationController
 
   # Params: before (timestamp (integer)).
   def index
-
+    
     # Grab the master News page's children...
     news_pages = Comfy::Cms::Page.where(label: 'news').first.children
 
