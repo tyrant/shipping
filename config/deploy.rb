@@ -39,6 +39,9 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', '
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
+# http://stackoverflow.com/questions/34126546
+set :rbenv_path, '/home/app-user/.rbenv'
+
 namespace :deploy do
 
   desc "Restart application"
