@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'comfortable_mexican_sofa', '1.12.2'
+gem 'comfortable_mexican_sofa'
 gem 'will_paginate' 
 
 gem 'sqlite3'

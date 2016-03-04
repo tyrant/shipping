@@ -24,6 +24,6 @@ module Shipping
     config.active_record.raise_in_transactional_callbacks = true
 
 
-    ComfortableMexicanSofa.config.reveal_cms_partials = true
+    #ComfortableMexicanSofa.config.reveal_cms_partials = true
   end
 end

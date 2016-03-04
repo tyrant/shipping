@@ -1,7 +1,8 @@
-# See erik.debill.org/2011/03/26/csing-backup-with-rails
+# See erik.debill.org/2011/03/26/csing-backup-with-rails (yes, 'csing', not 'using')
 
 database_yml = File.expand_path('../database.yml', __FILE__)
 RAILS_ENV = ENV['RAILS_ENV'] || 'production'
+puts RAILS_ENV
 
 require 'yaml'
 db_config = YAML.load_file(database_yml)
