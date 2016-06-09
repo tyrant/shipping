@@ -1,15 +1,14 @@
-<div id="recent_news">
-  <h3>Recent News</h3>
-  <ul>
-    <% recent_news.each do |page| %>
-      <li>
-        <%= link_to page[:label], "/news/#{page[:slug]}" %>, <%= page[:date] %>
-      </li>
-    <% end %>
-    <%= link_to '/news' do %>
-      <li class="bg-info more">
-        More News
-      </li>
-    <% end %>
-  </ul>
-</div>
+<h3>Recent News</h3>
+
+<ul>
+  <% recent_news.each do |page| %>
+    <li>
+      <%= link_to page[:label], "/news/#{page[:slug]}" %>, <%= page[:date] %>
+    </li>
+  <% end %>
+  <%= link_to '/news' do %>
+    <li class="bg-info more">
+      More News
+    </li>
+  <% end %>
+</ul>

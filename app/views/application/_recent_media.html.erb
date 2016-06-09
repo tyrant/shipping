@@ -1,0 +1,14 @@
+<h3>Recent Media</h3>
+
+<ul>
+  <% recent_media.each do |page| %>
+    <li>
+      <%= link_to page[:label], "/media/#{page[:slug]}" %>, <%= page[:date] %>
+    </li>
+  <% end %>
+  <%= link_to '/media' do %>
+    <li class="bg-info more">
+      More Media
+    </li>
+  <% end %>
+</ul>

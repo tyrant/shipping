@@ -105,13 +105,17 @@
     </div>
 
     <div class="container">
+
       <div class="col-sm-9 main_content"> 
         <%= yield %>
-
       </div>
 
-      <div class="col-sm-3">
-        <%= render 'recent_news' %>
+      <div id="right_sidebar" class="col-sm-3">
+        <% if media_page? %>
+          <%= render 'recent_media' %>
+        <% else %>
+          <%= render 'recent_news' %>
+        <% end %>
       </div>
     </div>
 
