@@ -2,7 +2,7 @@
 # https://gorails.com/deploy/ubuntu/14.04
 
 # config valid only for current version of Capistrano
-lock '3.4.0'
+#lock '3.4.0'
 
 set :application, 'shipping'
 set :repo_url, 'git@github.com:tyrant/shipping.git'
