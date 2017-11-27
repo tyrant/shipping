@@ -272,7 +272,7 @@ DEPENDENCIES
   capistrano-rbenv
   capistrano-rbenv-install (~> 1.2.0)
   coffee-rails (~> 4.1.0)
-  comfortable_mexican_sofa
+  comfortable_mexican_sofa (~> 1.12.0)
   execjs
   jbuilder (~> 2.0)
   jquery-rails
