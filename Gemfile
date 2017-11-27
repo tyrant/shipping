@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-gem 'comfortable_mexican_sofa'
 gem 'will_paginate' 
 
 gem 'sqlite3'
@@ -68,3 +67,5 @@ end
 group :production do
 
 end
+
+gem 'comfortable_mexican_sofa', '~> 1.12.0'
