@@ -71,15 +71,13 @@ $ ->
     earliestTimestamp = 2**32
 
     $('#load_more').on 'click', ->
-      console.log '#load_more clicked'
       $('#load_more #spinner').show()
       $('#load_more').prop 'disabled', true
 
       $.get "/more_news?before=#{earliestTimestamp}", (response) ->
         $('#load_more #spinner').hide()
         $('#load_more').prop 'disabled', false
-        
-        console.log '#load_more response'
+
         # Add the latest items to the page
         for page in response
           page_html = _.template(news_tmpl)(page)
