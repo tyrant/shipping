@@ -1,14 +1,13 @@
 source 'https://rubygems.org'
 
-gem 'will_paginate' 
+ruby '2.5.0'
 
-gem 'sqlite3'
-# stackoverflow.com/questions/22932282
-gem 'mysql2'
+gem 'will_paginate'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 4.2.0'
 # Use sqlite3 as the database for Active Record
+gem 'sqlite3'
 
 # Use SCSS for stylesheets
 gem 'sass-rails'
@@ -61,11 +60,14 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
+  #gem 'spring'
 end
 
 group :production do
+  # stackoverflow.com/questions/22932282
+  gem 'mysql2'
 
 end
 
+gem 'mimemagic', '~> 0.3.7' # CMS 1.12 requires 0.3.2 - https://rubygems.org/gems/mimemagic/versions says it's yanked!
 gem 'comfortable_mexican_sofa', '~> 1.12.0'
