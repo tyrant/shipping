@@ -2,52 +2,43 @@ module ApplicationHelper
 
   # The most recent five news pages.
   def recent_news
-
     # Grab the sub-pages of the 'news' page...
-    news_page = Comfy::Cms::Page.where(label: 'news').first
+    news_page = Comfy::Cms::Page.where(label: 'news')
+      .includes(blocks: { files: :categories }).first
 
-    if news_page
-      news_page.children.find_all do |page|
-        page.is_published?
+    return [] if !news_page
 
-      # ...order them by either published or creation date, descending...
-      end.sort do |page1, page2|                   
+    news_page.children.published
+      .sort do |page1, page2|                   
         page_published_on(page2).to_i <=> page_published_on(page1).to_i
 
-      # ...grab the first five and return their label and creation date.
-      end.take(5).map do |page|            
-        {
-          label: page.label,
-          slug:  page.slug, 
-          date:  page_published_on(page).strftime('%F')
-        }
-      end
-    else 
-      []
+    # ...grab the first five and return their label and creation date.
+    end.take(5).map do |page|            
+      {
+        label: page.label,
+        slug:  page.slug, 
+        date:  page_published_on(page).strftime('%F')
+      }
     end
   end
 
   # The most recent five media pages.
   def recent_media
+    media_page = Comfy::Cms::Page.where(label: 'Media')
+      .includes(blocks: { files: :categories }).first
 
-    media_page = Comfy::Cms::Page.where(label: 'Media').first
+    return [] if !media_page
 
-    if media_page
-      media_page.children.find_all do |page|
-        page.is_published?
-
-      end.sort do |page1, page2|
+    media_page.children.published
+      .sort do |page1, page2|
         page_published_on(page2).to_i <=> page_published_on(page1).to_i
 
-      end.take(5).map do |page|
-        {
-          label: page.label,
-          slug:  page.slug,
-          date:  page_published_on(page).strftime('%F')
-        }
-      end
-    else
-      []
+    end.take(5).map do |page|
+      {
+        label: page.label,
+        slug:  page.slug,
+        date:  page_published_on(page).strftime('%F')
+      }
     end
   end
 
@@ -63,9 +54,10 @@ module ApplicationHelper
 
   # Filter the site files by whether they're categorised as 'ships', randomise their order, and return their URLs.
   def ship_images
-    @cms_site.files.find_all do |file|
-      file.categories.map {|c| c.label }.include? 'ships'
-    end.shuffle!
+    Comfy::Cms::File.includes(:categories).joins(:categories)
+      .find_all do |file|
+        file.categories.map {|c| c.label }.include? 'ships'
+      end.shuffle!
   end
 
   def current_link_to(content, url, options={})
